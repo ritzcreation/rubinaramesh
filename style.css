@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background-color: #faf7f2;
+  color: #2d2430;
+}
+
+main {
+  min-height: 100vh;
+}
+
+/* Navigation */
+nav {
+  width: 100%;
+  background-color: #341425;
+  padding: 24px 60px 60px;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+}
+
+nav::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  height: 34px;
+  background: linear-gradient(to bottom, #e6c98b, #b88945);
+}
+
+nav h1 {
+  color: #faf7f2;
+  font-size: 8.8rem;
+  font-weight: normal;
+  letter-spacing: 2px;
+  text-align: center;
+  text-transform: uppercase;
+  background: linear-gradient(to bottom, #fdfaf4, #e6c98b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+nav a {
+  text-decoration: none;
+  color: #faf7f2;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+nav a:hover {
+  color: #d4b06a;
+}
+
+/*social media icons */
+.social-icons {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  gap: 18px;
+  z-index: 2;
+}
+
+.social-icons a {
+  width: 28px;
+  height: 28px;
+  background-color: #341425;
+  color: #faf7f2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.social-icons a:hover {
+  background-color: #4b1e3a;
+  color: #e6c98b;
+}
+
+/* Hero section */
+section {
+  min-height: calc(100vh - 92px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 24px;
+  text-align: center;
+  background-color: #faf7f2;
+}
+
+section p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  line-height: 1.8;
+  color: #5a4a57;
+  margin: 0 auto;
+}
+
+section h2 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 4rem;
+  font-weight: normal;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  color: #2d2430;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Optional decorative line under hero heading */
+section h2::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 2px;
+  background-color: #d4b06a;
+  margin: 24px auto 0;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #341425;
+  color: white;
+}
