@@ -12,44 +12,46 @@ body {
 
 main {
   min-height: 100vh;
+  padding-top: 280px;
 }
 
-/* Navigation */
-nav {
+/* Header */
+.site-header {
   width: 100%;
   background-color: #341425;
-  padding: 24px 60px 60px;
-  flex-direction: column;
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
-nav::after {
+.header-inner {
+  position: relative;
+  padding: 22px 60px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.4s ease;
+}
+
+.site-header::after {
   content: "";
   position: absolute;
   left: 0;
   bottom: 0;
-  display: block;
   width: 100%;
   height: 34px;
   background: linear-gradient(to bottom, #e6c98b, #b88945);
 }
 
-nav h1 {
-  color: #faf7f2;
-  font-size: 8.8rem;
-  font-weight: normal;
-  letter-spacing: 2px;
-  text-align: center;
-  text-transform: uppercase;
-  background: linear-gradient(to bottom, #fdfaf4, #e6c98b);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* Top navigation */
+.top-nav {
+  order: 1;
+  margin-bottom: 18px;
+  transition: all 0.4s ease;
 }
 
-nav ul {
+.top-nav ul {
   list-style: none;
   display: flex;
   gap: 32px;
@@ -58,27 +60,48 @@ nav ul {
   flex-wrap: wrap;
 }
 
-nav a {
+.top-nav a {
   text-decoration: none;
   color: #faf7f2;
   font-size: 1.3rem;
   letter-spacing: 1px;
   text-transform: uppercase;
+  transition: color 0.3s ease;
 }
 
-nav a:hover {
+.top-nav a:hover {
   color: #d4b06a;
 }
 
-/*social media icons */
+/* Author name */
+.author-name {
+  order: 2;
+  text-align: center;
+  transition: all 0.4s ease;
+}
+
+.author-name h1 {
+  font-size: 8.8rem;
+  font-weight: normal;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  line-height: 1;
+  text-align: center;
+  background: linear-gradient(to bottom, #fdfaf4, #e6c98b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.4s ease;
+}
+
+/* Social media icons */
 .social-icons {
   position: absolute;
   bottom: 4px;
   left: 50%;
-  transform: translate(-50%);
+  transform: translateX(-50%);
   display: flex;
   gap: 18px;
-  z-index: 2;
+  z-index: 1001;
 }
 
 .social-icons a {
@@ -92,6 +115,7 @@ nav a:hover {
   justify-content: center;
   text-decoration: none;
   font-size: 1.1rem;
+  transition: all 0.3s ease;
 }
 
 .social-icons a:hover {
@@ -99,30 +123,52 @@ nav a:hover {
   color: #e6c98b;
 }
 
-/*latest book section*/
+/* SCROLLED STATE */
+.site-header.scrolled .header-inner {
+  padding: 12px 60px 52px;
+}
 
+.site-header.scrolled .top-nav {
+  order: 2;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.site-header.scrolled .author-name {
+  order: 1;
+}
+
+.site-header.scrolled .author-name h1 {
+  font-size: 3.8rem;
+}
+
+/* Latest book section */
 .latest-book {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 90px;
+  gap: 50px;
   padding: 100px 60px;
   background-color: #faf7f2;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .latest-book-image {
-  flex: 1;
+  flex: 1.3;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
 }
 
 .latest-book-image img {
   width: 100%;
-  max-width: 380px;
+  max-width: 480px;
   height: auto;
   display: block;
   animation: glideInLeft 1.6s ease-out;
+  image-rendering: auto;
 }
 
 @keyframes glideInLeft {
@@ -138,8 +184,10 @@ nav a:hover {
 }
 
 .latest-book-content {
-  flex: 1;
-  text-align: left;
+  flex: 1.7;
+  text-align: justify;
+  display: flex;
+  flex-direction: column;
 }
 
 .book-label {
@@ -166,15 +214,16 @@ nav a:hover {
 }
 
 .book-button {
-  display: table;
-  margin: 24px auto 0;
-  padding: 14px 28px;
+  display: inline-block;
+  margin: 24px 0 0 auto;
+  padding: 14px 22px;
   background-color: #341425;
   color: #faf7f2;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1px;
   border-radius: 30px;
+  transition: all 0.3s ease;
 }
 
 .book-button:hover {
@@ -182,9 +231,9 @@ nav a:hover {
   color: #e6c98b;
 }
 
-/* Readers Reviews Here*/
+/* Reader reviews */
 .reader-reviews {
-  padding: 100px 60px;
+  padding: 30px 60px 100px;
   background-color: #faf7f2;
   text-align: center;
 }
@@ -194,6 +243,16 @@ nav a:hover {
   font-weight: normal;
   color: #341425;
   margin-bottom: 50px;
+}
+
+.reader-reviews h2::before {
+  content: "";
+  display: block;
+  width: 190px;
+  height: 3px;
+  margin: 0 auto 18px;
+  border-radius: 999px;
+  background: linear-gradient(to right, #e6c98b, #b88945, #e6c98b);
 }
 
 .review-grid {
@@ -236,8 +295,81 @@ nav a:hover {
   color: #9b8a84;
   font-style: italic;
 }
-/* Footer*/
 
+.about-hero {
+  text-align: center;
+  padding: 80px 20px 40px;
+  background-color: #faf7f2;
+}
+
+.about-author-image {
+  margin-bottom: 28px;
+}
+
+.about-author-image img {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 20px;
+  border: 3px solid #d4b06a;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.about-hero h2 {
+  font-size: 2.4rem;
+  font-weight: normal;
+  color: #341425;
+  margin-bottom: 14px;
+}
+
+.about-hero p {
+  font-size: 1.1rem;
+  color: #5a4a57;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.about-content {
+  padding: 20px 20px 80px;
+  background-color: #faf7f2;
+}
+
+.about-text {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+.about-text p {
+  font-size: 1.08rem;
+  line-height: 1.9;
+  color: #5a4a57;
+  margin-bottom: 24px;
+}
+
+.contact-rubina-button {
+  display: block;
+  width: fit-content;
+  margin: 30px auto 0;
+  padding: 14px 28px;
+  background-color: #341425;
+  color: #faf7f2;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.contact-rubina-button:hover {
+  background-color: #4b1e3a;
+  color: #e6c98b;
+}
+
+/* Footer */
 footer {
   text-align: center;
   padding: 20px;
@@ -245,22 +377,33 @@ footer {
   color: white;
 }
 
-/* Media Query*/
-
+/* Responsive */
 @media (max-width: 1024px) {
-  nav {
-    padding: 20px 30px 55px;
+  main {
+    padding-top: 220px;
   }
 
-  nav h1 {
+  .header-inner {
+    padding: 18px 30px 55px;
+  }
+
+  .author-name h1 {
     font-size: 5.5rem;
   }
 
-  nav ul {
+  .site-header.scrolled .header-inner {
+    padding: 10px 30px 50px;
+  }
+
+  .site-header.scrolled .author-name h1 {
+    font-size: 2.8rem;
+  }
+
+  .top-nav ul {
     gap: 20px;
   }
 
-  nav a {
+  .top-nav a {
     font-size: 1rem;
   }
 
@@ -275,21 +418,41 @@ footer {
 }
 
 @media (max-width: 768px) {
-  nav {
-    padding: 20px 20px 55px;
+  main {
+    padding-top: 180px;
   }
 
-  nav h1 {
+  .header-inner {
+    padding: 16px 20px 55px;
+  }
+
+  .author-name h1 {
     font-size: 3.8rem;
     letter-spacing: 1px;
   }
 
-  nav ul {
+  .top-nav {
+    margin-bottom: 14px;
+  }
+
+  .top-nav ul {
     gap: 14px 18px;
   }
 
-  nav a {
+  .top-nav a {
     font-size: 0.9rem;
+  }
+
+  .site-header.scrolled .header-inner {
+    padding: 10px 20px 48px;
+  }
+
+  .site-header.scrolled .author-name h1 {
+    font-size: 2.2rem;
+  }
+
+  .site-header.scrolled .top-nav {
+    margin-top: 8px;
   }
 
   .social-icons {
@@ -326,37 +489,61 @@ footer {
     font-size: 2.6rem;
   }
 
-  .book-description p {
+  .book-description {
     font-size: 1rem;
     line-height: 1.7;
   }
+
   .review-grid {
     grid-template-columns: 1fr;
+  }
+
+  .reader-reviews {
+    padding: 20px 20px 80px;
   }
 }
 
 @media (max-width: 480px) {
-  nav {
-    padding: 16px 16px 50px;
-    gap: 18px;
+  main {
+    padding-top: 145px;
   }
 
-  nav h1 {
+  .header-inner {
+    padding: 14px 16px 50px;
+  }
+
+  .author-name h1 {
     font-size: 2.4rem;
     line-height: 1.1;
   }
 
-  nav ul {
+  .top-nav {
+    margin-bottom: 12px;
+  }
+
+  .top-nav ul {
     gap: 10px 14px;
   }
 
-  nav a {
+  .top-nav a {
     font-size: 0.8rem;
     letter-spacing: 0.5px;
   }
 
-  nav::after {
+  .site-header::after {
     height: 24px;
+  }
+
+  .site-header.scrolled .header-inner {
+    padding: 8px 16px 42px;
+  }
+
+  .site-header.scrolled .author-name h1 {
+    font-size: 1.6rem;
+  }
+
+  .site-header.scrolled .top-nav {
+    margin-top: 6px;
   }
 
   .social-icons {
@@ -387,12 +574,16 @@ footer {
     font-size: 2rem;
   }
 
-  .book-description p {
+  .book-description {
     font-size: 0.95rem;
   }
 
   .book-button {
     padding: 12px 22px;
     font-size: 0.85rem;
+  }
+
+  .reader-reviews {
+    padding: 15px 16px 70px;
   }
 }
